@@ -152,7 +152,6 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
             <button type="button" class="btn btn-light mr-2" id="urlBtn">URL</button>
             <button type="button" class="btn btn-light mr-2" id="bbcodeBtn">BBCode</button>
             <button type="button" class="btn btn-light mr-2" id="markdownBtn">Markdown</button>
-            <button type="button" class="btn btn-light" id="htmlBtn">HTML</button>
           </div>
           <div class="form-group mb-3 uniform-height" style="display: none;">
             <textarea class="form-control" id="fileLink" readonly></textarea>
@@ -328,7 +327,7 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
             });
           }
       
-          $('#urlBtn, #bbcodeBtn, #markdownBtn, #htmlBtn').on('click', function() {
+          $('#urlBtn, #bbcodeBtn, #markdownBtn').on('click', function() {
             const fileLinks = originalImageURLs.map(url => url.trim()).filter(url => url !== '');
             if (fileLinks.length > 0) {
               let formattedLinks = '';
@@ -341,9 +340,6 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
                   break;
                 case 'markdownBtn':
                   formattedLinks = fileLinks.map(url => '![image](' + url + ')').join('\\n\\n');
-                  break;
-                case 'htmlBtn':
-                  formattedLinks = fileLinks.map(url => '<img src="' + url + '" alt="image">').join('\n\n');
                   break;
                 default:
                   formattedLinks = fileLinks.join('\\n');
