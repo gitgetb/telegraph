@@ -330,8 +330,12 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
       
           $('#urlBtn, #bbcodeBtn, #markdownBtn, #htmlBtn').on('click', function() {
             const fileLinks = originalImageURLs.map(url => url.trim()).filter(url => url !== '');
+            
+            console.log('originalImageURLs:', originalImageURLs);  // 调试输出
+            
             if (fileLinks.length > 0) {
               let formattedLinks = '';
+              
               switch ($(this).attr('id')) {
                 case 'urlBtn':
                   formattedLinks = fileLinks.join('\n\n');
@@ -348,11 +352,15 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
                 default:
                   formattedLinks = fileLinks.join('\n');
               }
+              
+              console.log('formattedLinks:', formattedLinks);  // 调试输出
+          
               $('#fileLink').val(formattedLinks);
               adjustTextareaHeight($('#fileLink')[0]);
               copyToClipboardWithToastr(formattedLinks);
             }
           });
+
       
           function handleFileClear(event) {
             $('#fileLink').val('');
