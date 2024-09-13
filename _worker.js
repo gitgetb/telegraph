@@ -149,10 +149,10 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
             <input id="fileInput" name="file" type="file" class="form-control-file" data-browse-on-zone-click="true" multiple>
           </div>
           <div class="form-group mb-3 uniform-height" style="display: none;">
-            <button type="button" class="btn btn-light mr-2" id="urlBtn">URL</button>
-            <button type="button" class="btn btn-light mr-2" id="bbcodeBtn">BBCode</button>
-            <button type="button" class="btn btn-light mr-2" id="markdownBtn">Markdown</button>
-            <button type="button" class="btn btn-light mr-2" id="htmlBtn">HTML</button> <!-- 新增的 HTML 按钮 -->
+            <button type="button" class="btn btn-light mr-1" id="urlBtn">URL</button>
+            <button type="button" class="btn btn-light mr-1" id="bbcodeBtn">BBCode</button>
+            <button type="button" class="btn btn-light mr-1" id="markdownBtn">Markdown</button>
+            <button type="button" class="btn btn-light" id="htmlBtn">HTML</button> <!-- 新增的 HTML 按钮 -->
           </div>
           <div class="form-group mb-3 uniform-height" style="display: none;">
             <textarea class="form-control" id="fileLink" readonly></textarea>
