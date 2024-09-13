@@ -152,6 +152,7 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
             <button type="button" class="btn btn-light mr-2" id="urlBtn">URL</button>
             <button type="button" class="btn btn-light mr-2" id="bbcodeBtn">BBCode</button>
             <button type="button" class="btn btn-light mr-2" id="markdownBtn">Markdown</button>
+            <button type="button" class="btn btn-light mr-2" id="htmlBtn">HTML</button> <!-- 新增的 HTML 按钮 -->
           </div>
           <div class="form-group mb-3 uniform-height" style="display: none;">
             <textarea class="form-control" id="fileLink" readonly></textarea>
@@ -327,7 +328,7 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
             });
           }
       
-          $('#urlBtn, #bbcodeBtn, #markdownBtn').on('click', function() {
+          $('#urlBtn, #bbcodeBtn, #markdownBtn, #htmlBtn').on('click', function() {
             const fileLinks = originalImageURLs.map(url => url.trim()).filter(url => url !== '');
             if (fileLinks.length > 0) {
               let formattedLinks = '';
@@ -340,6 +341,9 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
                   break;
                 case 'markdownBtn':
                   formattedLinks = fileLinks.map(url => '![image](' + url + ')').join('\\n\\n');
+                  break;
+                case 'htmlBtn':  // 新增 HTML 格式的处理逻辑
+                  formattedLinks = fileLinks.map(url => '<img src="' + url + '" alt="Image">').join('\\n\\n');
                   break;
                 default:
                   formattedLinks = fileLinks.join('\\n');
@@ -371,9 +375,9 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
             document.body.removeChild(input);
             toastr.success('已复制到剪贴板', '', { timeOut: 300 });
           }
-      
+          
           function hideButtonsAndTextarea() {
-            $('#urlBtn, #bbcodeBtn, #markdownBtn, #htmlBtn, #fileLink').parent('.form-group').hide();
+            $('#urlBtn, #bbcodeBtn, #markdownBtn, #htmlBtn, #fileLink').parent('.form-group').hide();  // 加入 #htmlBtn
           }
       
           function saveToLocalCache(url, fileName) {
