@@ -152,7 +152,7 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
             <button type="button" class="btn btn-light mr-2" id="urlBtn">URL</button>
             <button type="button" class="btn btn-light mr-2" id="bbcodeBtn">BB</button>
             <button type="button" class="btn btn-light mr-2" id="markdownBtn">MD</button>
-            <button type="button" class="btn btn-light" id="htmlBtn">HTML</button>
+            <button type="button" class="btn btn-light" id="htmlBtn">HTML</button> <!-- 新增的 HTML 按钮 -->
           </div>
           <div class="form-group mb-3 uniform-height" style="display: none;">
             <textarea class="form-control" id="fileLink" readonly></textarea>
@@ -330,37 +330,29 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
       
           $('#urlBtn, #bbcodeBtn, #markdownBtn, #htmlBtn').on('click', function() {
             const fileLinks = originalImageURLs.map(url => url.trim()).filter(url => url !== '');
-            
-            console.log('originalImageURLs:', originalImageURLs);  // 调试输出
-            
             if (fileLinks.length > 0) {
               let formattedLinks = '';
-              
               switch ($(this).attr('id')) {
                 case 'urlBtn':
-                  formattedLinks = fileLinks.join('\n\n');
+                  formattedLinks = fileLinks.join('\\n\\n');
                   break;
                 case 'bbcodeBtn':
-                  formattedLinks = fileLinks.map(url => '[img]' + url + '[/img]').join('\n\n');
+                  formattedLinks = fileLinks.map(url => '[img]' + url + '[/img]').join('\\n\\n');
                   break;
                 case 'markdownBtn':
-                  formattedLinks = fileLinks.map(url => '![image](' + url + ')').join('\n\n');
+                  formattedLinks = fileLinks.map(url => '![image](' + url + ')').join('\\n\\n');
                   break;
-                case 'htmlBtn':
-                  formattedLinks = fileLinks.map(url => '<img src="' + url + '" alt="Image">').join('\n\n');
+                case 'htmlBtn':  // 新增 HTML 格式的处理逻辑
+                  formattedLinks = fileLinks.map(url => '<img src="' + url + '" alt="Image">').join('\\n\\n');
                   break;
                 default:
-                  formattedLinks = fileLinks.join('\n');
+                  formattedLinks = fileLinks.join('\\n');
               }
-              
-              console.log('formattedLinks:', formattedLinks);  // 调试输出
-          
               $('#fileLink').val(formattedLinks);
               adjustTextareaHeight($('#fileLink')[0]);
               copyToClipboardWithToastr(formattedLinks);
             }
           });
-
       
           function handleFileClear(event) {
             $('#fileLink').val('');
