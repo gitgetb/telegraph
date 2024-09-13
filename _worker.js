@@ -334,19 +334,19 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
               let formattedLinks = '';
               switch ($(this).attr('id')) {
                 case 'urlBtn':
-                  formattedLinks = fileLinks.join('\\n\\n');
+                  formattedLinks = fileLinks.join('\n\n');
                   break;
                 case 'bbcodeBtn':
-                  formattedLinks = fileLinks.map(url => '[img]' + url + '[/img]').join('\\n\\n');
+                  formattedLinks = fileLinks.map(url => '[img]' + url + '[/img]').join('\n\n');
                   break;
                 case 'markdownBtn':
-                  formattedLinks = fileLinks.map(url => '![image](' + url + ')').join('\\n\\n');
+                  formattedLinks = fileLinks.map(url => '![image](' + url + ')').join('\n\n');
                   break;
                 case 'htmlBtn':
-                  formattedLinks = fileLinks.map(url => '<img src="' + url + '" alt="Image">').join('\\n\\n');
+                  formattedLinks = fileLinks.map(url => '<img src="' + url + '" alt="Image">').join('\n\n');
                   break;
                 default:
-                  formattedLinks = fileLinks.join('\\n');
+                  formattedLinks = fileLinks.join('\n');
               }
               $('#fileLink').val(formattedLinks);
               adjustTextareaHeight($('#fileLink')[0]);
