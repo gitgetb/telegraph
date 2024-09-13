@@ -328,7 +328,7 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
             });
           }
       
-          $('#urlBtn, #bbcodeBtn, #markdownBtn').on('click', function() {
+          $('#urlBtn, #bbcodeBtn, #markdownBtn, #htmlBtn').on('click', function() {
             const fileLinks = originalImageURLs.map(url => url.trim()).filter(url => url !== '');
             if (fileLinks.length > 0) {
               let formattedLinks = '';
