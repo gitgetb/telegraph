@@ -377,7 +377,7 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
           }
       
           function hideButtonsAndTextarea() {
-            $('#urlBtn, #bbcodeBtn, #markdownBtn, #fileLink').parent('.form-group').hide();
+            $('#urlBtn, #bbcodeBtn, #markdownBtn, #htmlBtn, #fileLink').parent('.form-group').hide();
           }
       
           function saveToLocalCache(url, fileName) {
