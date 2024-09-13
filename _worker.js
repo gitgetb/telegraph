@@ -152,7 +152,7 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
             <button type="button" class="btn btn-light mr-2" id="urlBtn">URL</button>
             <button type="button" class="btn btn-light mr-2" id="bbcodeBtn">BB</button>
             <button type="button" class="btn btn-light mr-2" id="markdownBtn">MD</button>
-            <button type="button" class="btn btn-light" id="htmlBtn">HTML</button> <!-- 新增的 HTML 按钮 -->
+            <button type="button" class="btn btn-light" id="htmlBtn">HTML</button>
           </div>
           <div class="form-group mb-3 uniform-height" style="display: none;">
             <textarea class="form-control" id="fileLink" readonly></textarea>
@@ -342,7 +342,7 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
                 case 'markdownBtn':
                   formattedLinks = fileLinks.map(url => '![image](' + url + ')').join('\\n\\n');
                   break;
-                case 'htmlBtn':  // 新增 HTML 格式的处理逻辑
+                case 'htmlBtn':
                   formattedLinks = fileLinks.map(url => '<img src="' + url + '" alt="Image">').join('\\n\\n');
                   break;
                 default:
